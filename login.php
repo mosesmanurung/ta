@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="header">
-    <img src="logo.png" width="400px">
+    <img src="logo.png" width="100%">
   	<h2>Login</h2>
   </div>
 	 
