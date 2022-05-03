@@ -204,7 +204,6 @@
                                 'classification' => $searchKeyword,
                                 'signature' => $searchKeyword,
                                 'ips' => $searchKeyword,
-                                'ports' => $searchKeyword,
                                 'ipd' => $searchKeyword,
                                 'portd' => $searchKeyword,
                                 'timestamp' => $searchKeyword,
@@ -269,7 +268,6 @@
                                         <th>Classification</th>
                                         <th>Signature</th>
                                         <th>IP Source</th>
-                                        <th>Port Source</th>
                                         <th>IP Destination</th>
                                         <th>Port Destination</th>
                                         <th>Timestamp</th>
