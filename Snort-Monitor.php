@@ -363,35 +363,29 @@
                                 <div class="card-body">
                                     <h5><b>Security<span class="float-right"> Base Score Rating</span></b></h5>
                                     <br>
-                                    <h4 class="small font-weight-bold">None<span
-                                            class="float-right">0,0</span></h4>
+                                    <h4 class="small font-weight-bold">Critical<span
+                                            class="float-right">1</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 0%"
-                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Low<span
-                                            class="float-right">0,1 - 3,9</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Medium<span
-                                            class="float-right">4,0 - 6,9</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 100%"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%"
+                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <h4 class="small font-weight-bold">High<span
-                                            class="float-right">7,0 - 8,9</span></h4>
+                                            class="float-right">2</span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-warning" role="progressbar" style="width: 100%"
                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">Critical<span
-                                            class="float-right">9,0 - 10,0</span></h4>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%"
-                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <h4 class="small font-weight-bold">Medium<span
+                                            class="float-right">3</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar" role="progressbar" style="width: 100%"
+                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Low<span
+                                            class="float-right">4</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
+                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
