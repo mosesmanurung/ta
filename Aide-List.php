@@ -92,6 +92,7 @@
                         $searchArr = array(
                             'rulesname' => $searchKeyword,
                             'rules' => $searchKeyword,
+                            'argument' => $searchKeyword,
                         );
                     }
 
@@ -159,7 +160,7 @@
                                     <th></th>
                                     <th>Rules Name</th>
                                     <th>Rules</th>
-                                    <th>Action</th>
+                                    <th>Argument</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -171,10 +172,7 @@
                                     <td><?php echo ''.$count; ?></td>
                                     <td><?php echo $rule['rulesname']; ?></td>
                                     <td><?php echo $rule['rules']; ?></td>
-                                    <td>
-                                        <a href="AIDE-Tambah.php?id=<?php echo $rule['id']; ?>" class="fa fa-pen"></a>
-                                        <a href="AideDataAction.php?action_type=delete&id=<?php echo $rule['id']; ?>" class="fa fa-trash" onclick="return confirm('Are you sure to delete?')"></a>
-                                    </td>
+                                    <td><?php echo $rule['argument']; ?></td>
                                 </tr>
                                 <?php } }else{ ?>
                                 <tr><td colspan="5">No data(s) found......</td></tr>
