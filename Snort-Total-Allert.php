@@ -142,17 +142,11 @@
                                 <div class="card-body">
                                     <h5><b>Security<span class="float-right"> Total</span></b></h5>
                                     <br>
-                                    <h4 class="small font-weight-bold">Low<span
+                                    <h4 class="small font-weight-bold">Critical<span
                                             class="float-right">xxx</span></h4>
                                     <div class="progress mb-4">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Medium<span
-                                            class="float-right">xxx</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 100%"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%"
+                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <h4 class="small font-weight-bold">High<span
                                             class="float-right">xxx</span></h4>
@@ -160,11 +154,17 @@
                                         <div class="progress-bar bg-warning" role="progressbar" style="width: 100%"
                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
-                                    <h4 class="small font-weight-bold">Critical<span
+                                    <h4 class="small font-weight-bold">Medium<span
                                             class="float-right">xxx</span></h4>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 100%"
-                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar" role="progressbar" style="width: 100%"
+                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <h4 class="small font-weight-bold">Low<span
+                                            class="float-right">xxx</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
+                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
                             </div>
