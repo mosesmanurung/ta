@@ -90,14 +90,14 @@
                     $searchArr = '';
                     if(!empty($searchKeyword)){
                         $searchArr = array(
+                            'action' => $searchKeyword,
                             'protokol' => $searchKeyword,
                             'ips' => $searchKeyword,
                             'ports' => $searchKeyword,
                             'direct' => $searchKeyword,
                             'ipd' => $searchKeyword,
                             'portd' => $searchKeyword,
-                            'opt' => $searchKeyword,
-                            'klasifikasi' => $searchKeyword
+                            'message' => $searchKeyword
                         );
                     }
 
@@ -163,32 +163,31 @@
                             <thead>
                                 <tr>
                                     <th></th>
+                                    <th>Action</th>
                                     <th>Protokol</th>
                                     <th>IP Source</th>
                                     <th>Port Source</th>
                                     <th>Direction</th>
                                     <th>IP Destination</th>
                                     <th>Port Destination</th>
-                                    <th>Opt Rules</th>
-                                    <th>klasifikasi Serangan</th>
-                                    <th>Action</th>
+                                    <th>Message</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                if(!empty($rules)){ $count = 0; 
+                                if(!empty($rules)){ $count = 0;
                                     foreach($rules as $rule){ $count++;
                                 ?>
                                 <tr>
                                     <td><?php echo ''.$count; ?></td>
+                                    <td><?php echo $rule['action']; ?></td>
                                     <td><?php echo $rule['protokol']; ?></td>
                                     <td><?php echo $rule['ips']; ?></td>
                                     <td><?php echo $rule['ports']; ?></td>
                                     <td><?php echo $rule['direct']; ?></td>
                                     <td><?php echo $rule['ipd']; ?></td>
                                     <td><?php echo $rule['portd']; ?></td>
-                                    <td><?php echo $rule['opt']; ?></td>
-                                    <td><?php echo $rule['klasifikasi']; ?></td>
+                                    <td><?php echo $rule['message']; ?></td>
                                     <td>
                                         <a href="Snort-Tambah.php?id=<?php echo $rule['id']; ?>" class="fa fa-pen"></a>
                                         <a href="SnortDataAction.php?action_type=delete&id=<?php echo $rule['id']; ?>" class="fa fa-trash" onclick="return confirm('Are you sure to delete?')"></a>
