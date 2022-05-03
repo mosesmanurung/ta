@@ -110,13 +110,30 @@
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                    <script type="text/javascript">
-                                                        $(document).ready(function() {
-                                                        $.getJSON("https://api.ipify.org/?format=json", function(e) {
-                                                            $('.ip').text(e.ip);
-                                                        });
-                                                        });
-                                                    </script>
+                                                    <?php
+                                                    function getClientIP() {
+
+                                                        if (isset($_SERVER)) {
+
+                                                            if (isset($_SERVER["HTTP_X_FORWARDED_FOR"]))
+                                                                return $_SERVER["HTTP_X_FORWARDED_FOR"];
+
+                                                            if (isset($_SERVER["HTTP_CLIENT_IP"]))
+                                                                return $_SERVER["HTTP_CLIENT_IP"];
+
+                                                            return $_SERVER["REMOTE_ADDR"];
+                                                        }
+
+                                                        if (getenv('HTTP_X_FORWARDED_FOR'))
+                                                            return getenv('HTTP_X_FORWARDED_FOR');
+
+                                                        if (getenv('HTTP_CLIENT_IP'))
+                                                            return getenv('HTTP_CLIENT_IP');
+
+                                                        return getenv('REMOTE_ADDR');
+                                                    }
+                                                    echo "<h2 align=\"center\">Your IP Address ".getClientIP()."";
+                                                    ?>
                                                     </div>
                                                 </div>
                                             </div>
