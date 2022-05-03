@@ -9,7 +9,7 @@
   <div class="header">
       <tr>
           <td>
-          <img src="logo2.png" width="400px">
+          <img src="logo.png" width="100%">
           </td>
           <td>
           <h2>Register</h2>
