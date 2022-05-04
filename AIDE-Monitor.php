@@ -152,7 +152,10 @@
                                                 Date/Time</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <?php
-                                                echo date('d/m/Y H:i:s');
+                                                $tz = 'Asia/Jakarta';
+                                                $dt = new DateTime("now", new DateTimeZone($tz));
+                                                $timestamp = $dt->format('Y-m-d G:i:s');
+                                                echo $timestamp;
                                                 ?>
                                             </div>
                                         </div>
