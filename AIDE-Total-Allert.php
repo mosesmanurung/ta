@@ -155,25 +155,105 @@
                                     <h5><b>Summarry<span class="float-right"> Total</span></b></h5>
                                     <br>
                                     <h4 class="small font-weight-bold">Total Number of Entries<span
-                                            class="float-right">xxx</span></h4>
+                                            class="float-right">
+                                    <?php
+                                      $servername = "localhost";
+                                      $username = "ta04";
+                                      $password = "root";
+                                      $dbname = "ta";
+
+                                      // Create connection by passing these connection parameters
+                                      $conn = new mysqli($servername, $username, $password, $dbname);
+                                      $sql = "SELECT SUM(added + modified + removed) FROM aidemonitor";
+                                      $result = $conn->query($sql);
+
+                                      //display data on web page
+                                      while($row = mysqli_fetch_array($result)){
+                                          echo $row['SUM(added + modified + removed)'];;
+                                      }
+                                      //close the connection
+
+                                      $conn->close();
+                                      ?>
+                                    </span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <h4 class="small font-weight-bold">Added Entries<span
-                                            class="float-right">xxx</span></h4>
+                                            class="float-right">
+                                     <?php
+                                      $servername = "localhost";
+                                      $username = "ta04";
+                                      $password = "root";
+                                      $dbname = "ta";
+
+                                      // Create connection by passing these connection parameters
+                                      $conn = new mysqli($servername, $username, $password, $dbname);
+                                      $sql = "SELECT SUM(added) FROM aidemonitor";
+                                      $result = $conn->query($sql);
+
+                                      //display data on web page
+                                      while($row = mysqli_fetch_array($result)){
+                                          echo $row['SUM(added)'];;
+                                      }
+                                      //close the connection
+
+                                      $conn->close();
+                                      ?> 
+                                    </span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar" role="progressbar" style="width: 100%"
                                             aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <h4 class="small font-weight-bold">Modiefied Entries<span
-                                            class="float-right">xxx</span></h4>
+                                            class="float-right">
+                                      <?php
+                                        $servername = "localhost";
+                                        $username = "ta04";
+                                        $password = "root";
+                                        $dbname = "ta";
+
+                                        // Create connection by passing these connection parameters
+                                        $conn = new mysqli($servername, $username, $password, $dbname);
+                                        $sql = "SELECT SUM(modified) FROM aidemonitor";
+                                        $result = $conn->query($sql);
+
+                                        //display data on web page
+                                        while($row = mysqli_fetch_array($result)){
+                                            echo $row['SUM(modified)'];;
+                                        }
+                                        //close the connection
+
+                                        $conn->close();
+                                        ?>
+                                    </span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-warning" role="progressbar" style="width: 100%"
                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <h4 class="small font-weight-bold">Removed Entries<span
-                                            class="float-right">xxx</span></h4>
+                                            class="float-right">
+                                    <?php
+                                      $servername = "localhost";
+                                      $username = "ta04";
+                                      $password = "root";
+                                      $dbname = "ta";
+
+                                      // Create connection by passing these connection parameters
+                                      $conn = new mysqli($servername, $username, $password, $dbname);
+                                      $sql = "SELECT SUM(removed) FROM aidemonitor";
+                                      $result = $conn->query($sql);
+
+                                      //display data on web page
+                                      while($row = mysqli_fetch_array($result)){
+                                          echo $row['SUM(removed)'];;
+                                      }
+                                      //close the connection
+
+                                      $conn->close();
+                                      ?>
+                                    </span></h4>
                                     <div class="progress">
                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 100%"
                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
