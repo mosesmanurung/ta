@@ -62,7 +62,14 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             <a class="collapse-item" href="Snort-Total-Allert.php">Total Allerts</a></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">xxx</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <?php
+                                                $koneksi = mysqli_connect('localhost','ta04','root','ta');
+                                                $data_rules = mysqli_query($koneksi, "SELECT * FROM snortmonitor");
+                                                $jumlah_rules = mysqli_num_rows($data_rules);
+                                                ?>
+                                             <?php echo $jumlah_rules; ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +84,14 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Jumlah Rules</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">xxx</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                <?php
+                                                $koneksi = mysqli_connect('localhost','ta04','root','ta');
+                                                $data_rules = mysqli_query($koneksi, "SELECT * FROM snort_rules");
+                                                $jumlah_rules = mysqli_num_rows($data_rules);
+                                                ?>
+                                                <?php echo $jumlah_rules; ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -95,10 +109,31 @@
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
                                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                                    <?php
-                                                    $ip=$_SERVER['REMOTE_ADDR'];
-                                                        echo $ip;
-                                                    ?>
+                                                         <?php
+                                                          function getClientIP() {
+
+                                                              if (isset($_SERVER)) {
+
+                                                                  if (isset($_SERVER["HTTP_X_FORWARDED_FOR"]))
+                                                                      return $_SERVER["HTTP_X_FORWARDED_FOR"];
+
+                                                                  if (isset($_SERVER["HTTP_CLIENT_IP"]))
+                                                                      return $_SERVER["HTTP_CLIENT_IP"];
+
+                                                                  return $_SERVER["REMOTE_ADDR"];
+                                                              }
+
+                                                              if (getenv('HTTP_X_FORWARDED_FOR'))
+                                                                  return getenv('HTTP_X_FORWARDED_FOR');
+
+                                                              if (getenv('HTTP_CLIENT_IP'))
+                                                                  return getenv('HTTP_CLIENT_IP');
+
+                                                              return getenv('REMOTE_ADDR');
+                                                          }
+                                                          echo getClientIP()."";
+                                                          ?>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -118,7 +153,10 @@
                                                 Date/Time</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <?php
-                                                echo date('d/m/Y H:i:s');
+                                                $tz = 'Asia/Jakarta';
+                                                $dt = new DateTime("now", new DateTimeZone($tz));
+                                                $timestamp = $dt->format('Y-m-d G:i:s');
+                                                echo $timestamp;
                                                 ?>
                                             </div>
                                         </div>
