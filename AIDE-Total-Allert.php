@@ -62,7 +62,13 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                             <a class="collapse-item" href="AIDE-Total-Allert.php">Total Allerts</a></div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">xxx</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
+                                                $koneksi = mysqli_connect('localhost','ta04','root','ta');
+                                                $data_rules = mysqli_query($koneksi, "SELECT * FROM aidemonitor");
+                                                $jumlah_rules = mysqli_num_rows($data_rules);
+                                                ?>
+                                                <?php echo $jumlah_rules; ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -77,7 +83,13 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Jumlah Rules</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">xxx</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"> <?php
+                                                $koneksi = mysqli_connect('localhost','root','','ta');
+                                                $data_rules = mysqli_query($koneksi, "SELECT * FROM aide_rules");
+                                                $jumlah_rules = mysqli_num_rows($data_rules);
+                                                ?>
+                                                <?php echo $jumlah_rules; ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
