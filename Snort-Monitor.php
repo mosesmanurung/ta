@@ -11,7 +11,6 @@
     ?>
 <script src="https://unpkg.com/gridjs/dist/gridjs.production.min.js"></script>
 <link href="https://unpkg.com/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
-<link rel="stylesheet" href="modals.css">
 </head>
 
 <body id="page-top">
@@ -309,15 +308,19 @@
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Classification Description
-                                    <button id="modalBtn" class="fa fa-question"></button>
-                                        <div id="simpleModal" class="modal">
+                                    <i data-toggle="modal" data-target="#exampleModalLong" class="fa fa-question"></i>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                         <div class="modal-header">
-                                        <span class="closeBtn">&times;</span>
-                                        <h2>Classification Description</h2>
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Classification Description</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>CVSS affords three important benefits.
+                                        <p>CVSS affords three important benefits.
                                                 First, it provides standardized vulnerability scores. When an organization uses a common algorithm for scoring
                                                 vulnerabilities across all IT platforms, it can leverage a single vulnerability management policy defining the
                                                 maximum allowable time to validate and remediate a given vulnerability. Next, it provides an open framework.
@@ -351,14 +354,13 @@
                                                     <td>9.0-10</td>
                                                 </tr>
                                             </table>
-                                            </div>
+                                        </div>
                                         <div class="modal-footer">
-                                            <h8>src : https://www.first.org/cvss/v3.0/specification-document</h8>
+                                        <h8>src : <a href="https://www.first.org/cvss/v3.0/specification-document" target="_blank"> https://www.first.org/cvss/v3.0/specification-document</h8>
                                         </div>
                                         </div>
                                     </div>
-                                    <script src="modal.js"></script> 
-                                        <!--a href="classification.php" class="fa fa-question"></a-->
+                                    </div>
                                     </h6>
                                 </div>
                                 <div class="card-body">
