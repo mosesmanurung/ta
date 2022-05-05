@@ -330,7 +330,7 @@
                                                 of the risk posed by this vulnerability to the organization.</p>
                                             <p><b>Qualitative Severity Rating Scale</b> <br> For some purposes it is useful to have a textual representation of the
                                             numeric Base, Temporal and Environmental scores. All scores can be mapped to the qualitative ratings defined in Table</p>
-                                            <table border="1">
+                                            <table border="1" width="100%">
                                                 <th>Rating</th>
                                                 <th>CVSS Score</th>
                                                 <tr>
