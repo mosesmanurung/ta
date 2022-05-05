@@ -231,7 +231,7 @@
                             'like_or' => $searchArr,
                             'start' => $offset,
                             'limit' => $perPageLimit,
-                            'order_by' => 'id ASC',
+                            'order_by' => 'timestamp DESC',
                         );
                         $rules = $db->getRows('aidemonitor', $con);
 
