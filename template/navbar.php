@@ -42,9 +42,6 @@
                         <h6 class="collapse-header">Daftar Rules</h6>
                         <a class="collapse-item" href="Snort-List.php">Snort</a>
                         <a class="collapse-item" href="Aide-List.php">AIDE</a>
-                        <h6 class="collapse-header">Tambah Rules</h6>
-                        <a class="collapse-item" href="Snort-Tambah.php">Snort</a>
-                        <a class="collapse-item" href="AIDE-Tambah.php">AIDE</a>
                         <div class="collapse-divider"></div>
                     </div>
                 </div>
