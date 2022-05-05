@@ -206,7 +206,7 @@
                                 'objectname' => $searchKeyword,
                                 'added' => $searchKeyword,
                                 'modified' => $searchKeyword,
-                                'remove' => $searchKeyword,
+                                'removed' => $searchKeyword,
                                 'timestamp' => $searchKeyword
                             );
                         }
@@ -231,7 +231,7 @@
                             'like_or' => $searchArr,
                             'start' => $offset,
                             'limit' => $perPageLimit,
-                            'order_by' => 'timestamp DESC',
+                            'order_by' => 'id DESC',
                         );
                         $rules = $db->getRows('aidemonitor', $con);
 
