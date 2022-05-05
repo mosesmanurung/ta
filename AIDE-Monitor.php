@@ -64,7 +64,7 @@
                                             <a href="AIDE-Total-Allert.php">Total Allerts</a></div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <?php
-                                                $koneksi = mysqli_connect('localhost','root','','ta');
+                                                $koneksi = mysqli_connect('localhost','ta04','root','ta');
                                                 $data_rules = mysqli_query($koneksi, "SELECT * FROM aidemonitor");
                                                 $jumlah_rules = mysqli_num_rows($data_rules);
                                                 ?>
@@ -86,7 +86,7 @@
                                                 Jumlah Rules</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                                 <?php
-                                                $koneksi = mysqli_connect('localhost','root','','ta');
+                                                $koneksi = mysqli_connect('localhost','ta04','root','ta');
                                                 $data_rules = mysqli_query($koneksi, "SELECT * FROM aide_rules");
                                                 $jumlah_rules = mysqli_num_rows($data_rules);
                                                 ?>
@@ -131,7 +131,7 @@
 
                                                         return getenv('REMOTE_ADDR');
                                                     }
-                                                    echo "<h2 align=\"center\">Your IP Address ".getClientIP()."";
+                                                    echo getClientIP();
                                                     ?>
                                                     </div>
                                                 </div>
@@ -231,7 +231,7 @@
                             'like_or' => $searchArr,
                             'start' => $offset,
                             'limit' => $perPageLimit,
-                            'order_by' => 'id DESC',
+                            'order_by' => 'timestamp DESC',
                         );
                         $rules = $db->getRows('aidemonitor', $con);
 
