@@ -144,7 +144,7 @@
                                 <input type="text" name="sq" class="form-control" placeholder="Search by keyword..." value="<?php echo $searchKeyword; ?>">
                                 <div class="input-group-btn">
                                     <button class="btn btn-default" type="submit">
-                                        <i class="glyphicon glyphicon-search"></i>
+                                        <i class="fas fa-search"></i>
                                     </button>
                                 </div>
                             </div>
