@@ -159,7 +159,98 @@
                                 <tr>
                                     <th></th>
                                     <th>Rules Name</th>
-                                    <th>Rules</th>
+                                    <th>Rules 
+                                       <i data-toggle="modal" data-target="#exampleModalLong" class="fa fa-question"></i>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">Group definitions configuration lines</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <p>AIDE has set of pre-defined groups which help in specifying which parameters need to be monitored
+                                            for particular file /folder or directory hierarchy. Basic AIDE groups are</p>
+                                            <table border="1" width="100%">
+                                                <th>Indicator</th>
+                                                <th>Description</th>
+                                                <tr>
+                                                    <td>p</td>
+                                                    <td>File permissions (rwx, etc.)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>i</td>
+                                                    <td>Inode number</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>l</td>
+                                                    <td>Link name</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>n</td>
+                                                    <td>Number of links</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>u</td>
+                                                    <td>User owner of file</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>g</td>
+                                                    <td>Group owner of file</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>s</td>
+                                                    <td>Size of file</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>m</td>
+                                                    <td>Modification time of file</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>a</td>
+                                                    <td>Access time of file</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>c</td>
+                                                    <td>Status change or configuration change</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>S</td>
+                                                    <td>Checking for growing file size. This is very important for log files whose size should always increase.
+                                                        This wont cause any alarms if size change and final size increases. But if final size is less then the
+                                                        last time database was initialized(updated) then reduction in size is reported during check operation.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>I</td>
+                                                    <td>        Ignore changed filename. AIDE can recognize the same file with inode number. Now if we do not care
+                                                        if filename changes but some other parameter like owner, size, timestamps etc. remain same then we can
+                                                        use this option. Note that I will cause 'c' to get ignored as if we change file name the status change
+                                                        or configuration change timestamp will get updated.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>ANF</td>
+                                                    <td>Allow new files</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>ARF</td>
+                                                    <td>Allow removed files</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>md5, ha1. sha256, sha512, rmd160, tiger, haval, crc32</td>
+                                                    <td>calculate respective checksum</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <h8>src : <a href="https://www.sbarjatiya.com/notes_wiki/index.php/Configuring_basic_AIDE_server#Group_definitions_configuration_lines" target="_blank"> Configuring_basic_AIDE_server</h8>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </th>
                                     <th>Argument</th>
                                 </tr>
                             </thead>
