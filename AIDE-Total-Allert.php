@@ -84,7 +84,7 @@
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Jumlah Rules</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"> <?php
-                                                $koneksi = mysqli_connect('localhost','root','','ta');
+                                                $koneksi = mysqli_connect('localhost','ta04','root','ta');
                                                 $data_rules = mysqli_query($koneksi, "SELECT * FROM aide_rules");
                                                 $jumlah_rules = mysqli_num_rows($data_rules);
                                                 ?>
