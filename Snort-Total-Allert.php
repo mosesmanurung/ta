@@ -181,25 +181,50 @@
                                     <h5><b>Security<span class="float-right"> Total</span></b></h5>
                                     <br>
                                     <h4 class="small font-weight-bold">Critical<span
-                                            class="float-right">xxx</span></h4>
+                                            class="float-right">
+                                    <?php
+                                         $koneksi = mysqli_connect('localhost','ta04','root','ta');
+                                         $data_rules = mysqli_query($koneksi, "SELECT * FROM snortmonitor WHERE classification = 'Critical'");
+                                         $jumlah_rules = mysqli_num_rows($data_rules);
+                                    ?>
+                                    <?php echo $jumlah_rules; ?>                              
+                                      </span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 100%"
                                             aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <h4 class="small font-weight-bold">High<span
-                                            class="float-right">xxx</span></h4>
+                                            class="float-right">
+                                      <?php
+                                         $koneksi = mysqli_connect('localhost','ta04','root','ta');
+                                         $data_rules = mysqli_query($koneksi, "SELECT * FROM snortmonitor WHERE classification = 'High'");
+                                         $jumlah_rules = mysqli_num_rows($data_rules);
+                                    ?>
+                                      </span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-warning" role="progressbar" style="width: 100%"
                                             aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <h4 class="small font-weight-bold">Medium<span
-                                            class="float-right">xxx</span></h4>
+                                            class="float-right">
+                                      <?php
+                                         $koneksi = mysqli_connect('localhost','ta04','root','ta');
+                                         $data_rules = mysqli_query($koneksi, "SELECT * FROM snortmonitor WHERE classification = 'Medium'");
+                                         $jumlah_rules = mysqli_num_rows($data_rules);
+                                    ?>
+                                      </span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar" role="progressbar" style="width: 100%"
                                             aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                     <h4 class="small font-weight-bold">Low<span
-                                            class="float-right">xxx</span></h4>
+                                            class="float-right">
+                                      <?php
+                                         $koneksi = mysqli_connect('localhost','ta04','root','ta');
+                                         $data_rules = mysqli_query($koneksi, "SELECT * FROM snortmonitor WHERE classification = 'Low'");
+                                         $jumlah_rules = mysqli_num_rows($data_rules);
+                                    ?>
+                                      </span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
                                             aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
