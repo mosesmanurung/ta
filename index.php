@@ -59,6 +59,44 @@
                     </div>
                     </div>
                 </div>
+              
+              <br>
+              <br>
+              <br>
+              <center>
+              <div class="col-lg-4 mb-4">
+              <!-- Project Card Example -->
+              <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">Snort</h6>
+                  </div>
+                  <div class="card-body">
+                      <h5><b>Security<span class="float-right"> Base Score Rating</span></b></h5>
+                      <br>
+                  </div>
+              </div>
+              <div class="card shadow mb-4">
+                  <div class="card-header py-3">
+                      <h6 class="m-0 font-weight-bold text-primary">AIDE</h6>
+                  </div>
+                  <div class="card-body">
+                  <h5><b>
+                      <form action="index.php" method="POST">
+                          <input type="submit" value="Cek" name="btn" class="btn btn-danger">
+                      </form>
+                      <?php
+                      shell_exec('sudo aide -c /etc/aide/aide.conf --limit /etc --check > aide_check.txt');
+                      ?>
+                      <?php
+                      shell_exec('python3 aide_check.py');
+                      ?>
+                  </b></h5>
+                  <h5><b>
+                      <a href="AIDE-Monitor.php"><button class="btn btn-danger">see the data</button></a>
+                  </b></h5>
+                  </div>
+              </div>
+              </center>
 </div>
             <!-- Footer -->
             <?php
