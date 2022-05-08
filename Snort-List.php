@@ -135,7 +135,7 @@
                     <?php } ?>
 
                     <div class="row">
-                        <div class="col-md-12 search-panel">
+<!--                         <div class="col-md-12 search-panel">
                             <!-- Add link -->
                             <br>
                             <span class="pull-right">
@@ -156,7 +156,7 @@
                             </form>
                             
                             <br>
-                        </div>
+                        </div> -->
                         
                         <!-- Data list table --> 
                         <table class="table table-striped table-bordered">
@@ -188,10 +188,10 @@
                                     <td><?php echo $rule['ipd']; ?></td>
                                     <td><?php echo $rule['portd']; ?></td>
                                     <td><?php echo $rule['message']; ?></td>
-                                    <td>
+<!--                                     <td>
                                         <a href="Snort-Tambah.php?id=<?php echo $rule['id']; ?>" class="fa fa-pen"></a>
                                         <a href="SnortDataAction.php?action_type=delete&id=<?php echo $rule['id']; ?>" class="fa fa-trash" onclick="return confirm('Are you sure to delete?')"></a>
-                                    </td>
+                                    </td> -->
                                 </tr>
                                 <?php } }else{ ?>
                                 <tr><td colspan="5">No data(s) found......</td></tr>
