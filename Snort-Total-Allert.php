@@ -200,6 +200,7 @@
                                          $data_rules = mysqli_query($koneksi, "SELECT * FROM snortmonitor WHERE classification = 'High'");
                                          $jumlah_rules = mysqli_num_rows($data_rules);
                                     ?>
+                                      <?php echo $jumlah_rules; ?>
                                       </span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-warning" role="progressbar" style="width: 100%"
@@ -212,6 +213,7 @@
                                          $data_rules = mysqli_query($koneksi, "SELECT * FROM snortmonitor WHERE classification = 'Medium'");
                                          $jumlah_rules = mysqli_num_rows($data_rules);
                                     ?>
+                                      <?php echo $jumlah_rules; ?>
                                       </span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar" role="progressbar" style="width: 100%"
@@ -224,6 +226,7 @@
                                          $data_rules = mysqli_query($koneksi, "SELECT * FROM snortmonitor WHERE classification = 'Low'");
                                          $jumlah_rules = mysqli_num_rows($data_rules);
                                     ?>
+                                      <?php echo $jumlah_rules; ?>
                                       </span></h4>
                                     <div class="progress mb-4">
                                         <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
