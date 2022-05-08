@@ -96,7 +96,7 @@ with open("snort_log.txt", 'r') as f:  # snort_log.txt"
 #     print(Classification_temp[i]+" | " + Signature_temp[i]+" | "+IPS_temp[i] +
 #           " | "+Ports_temp[i]+" | "+IPD_temp[i]+" | "+Portd_temp[i]+" | "+Timestamp_temp[i])
 
-mycursor = mydb.cursor()
+mycursor = mydb.cursor(buffered=True)
 
 mycursor.execute("SHOW TABLES")
 table_show = []
