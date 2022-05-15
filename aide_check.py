@@ -1,5 +1,9 @@
 import mysql.connector
+import os
+from time import sleep
+import sys
 
+#os.system("sudo aide -c /etc/aide/aide.conf -C")
 # Database connection
 mydb = mysql.connector.connect(
     host="localhost",
@@ -21,10 +25,13 @@ def string_join(list_string):
 
 
 with open("aide_check.txt", 'r') as f:
-    stamp = f.readlines()[0].split(':')
-    strtemp = stamp[3].split(' ')
-    timestamp = stamp[1]+":"+stamp[2]+":"+strtemp[0]
-
+    stamp = f.readlines()
+    for line in stamp:
+        stemp = line.split(':')
+        if(len(stemp) == 4):
+            if(stemp[0] == "Start timestamp"):
+                strtemp = stemp[3].split(' ')
+                timestamp = stemp[1]+":"+stemp[2]+":"+strtemp[0]
 
 with open("aide_check.txt", 'r') as f:
     f.readline()
@@ -74,6 +81,7 @@ for i in addentries:
     stringsplit1 = i.split('/')
     tempname = string_join(stringsplit1)
     tempcount = 1
+    print("Check Folder Names")
     # Check If Folder Has Already Mentioned
     if(tempname not in foldername_added):
         foldername_added.append(tempname)
@@ -172,26 +180,30 @@ indicator = 0
 for x in mycursor:
     string = str(x).strip("'(),")
     table_show.append(string)
-    break
 
 if("aidemonitor" in table_show):
     indicator = 1
 
-#if (indicator == 0):
-#    mycursor.execute(
-#        "CREATE TABLE aidemonitor (id INT AUTO_INCREMENT PRIMARY KEY, objectname varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `added` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `modified` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `removed` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,`timestamp` datetime NOT NULL)")
-# else:
-#     mycursor.execute("DROP TABLE aidemonitor")
-#     mycursor.execute(
-#         "CREATE TABLE aidemonitor (id INT AUTO_INCREMENT PRIMARY KEY, objectname varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `added` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `modified` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `removed` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,`timestamp` datetime NOT NULL)")
+if (indicator == 0):
+    mycursor.execute(
+        "CREATE TABLE aidemonitor (id INT AUTO_INCREMENT PRIMARY KEY, objectname varchar(255)>
+else:
+    mycursor.execute("DROP TABLE aidemonitor")
+    mycursor.execute(
+        "CREATE TABLE aidemonitor (id INT AUTO_INCREMENT PRIMARY KEY, objectname varchar(255)>
 
 table_show.clear()
 
-sql = ("INSERT INTO aidemonitor(objectname,added,modified,removed,timestamp) VALUES (%s,%s,%s,%s,%s)")
+sql = ("INSERT INTO aidemonitor(objectname,added,modified,removed,timestamp) VALUES (%s,%s,%s>
 
 for i in range(1, len(temp_name)):
     values = ('{}'.format(temp_name[i]), '{}'.format(temp_value1[i]),
-              '{}'.format(temp_value3[i]), '{}'.format(temp_value2[i]), '{}'.format(timestamp))
+              '{}'.format(temp_value3[i]), '{}'.format(temp_value2[i]), '{}'.format(timestamp>
     mycursor.execute(sql, values)
-
+mycursor.close()
 mydb.commit()
+# exec(open("loop.py").read())
+mydb.close()
+sleep(2)
+os.system(r"python3 loop.py")
+sys.exit(0)
