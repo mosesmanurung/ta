@@ -186,19 +186,19 @@ if("aidemonitor" in table_show):
 
 if (indicator == 0):
     mycursor.execute(
-        "CREATE TABLE aidemonitor (id INT AUTO_INCREMENT PRIMARY KEY, objectname varchar(255)>
+        "CREATE TABLE aidemonitor (id INT AUTO_INCREMENT PRIMARY KEY, objectname varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `added` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `modified` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `removed` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,`timestamp` datetime NOT NULL)")
 else:
     mycursor.execute("DROP TABLE aidemonitor")
     mycursor.execute(
-        "CREATE TABLE aidemonitor (id INT AUTO_INCREMENT PRIMARY KEY, objectname varchar(255)>
+        "CREATE TABLE aidemonitor (id INT AUTO_INCREMENT PRIMARY KEY, objectname varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `added` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `modified` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `removed` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,`timestamp` datetime NOT NULL)")
 
 table_show.clear()
 
-sql = ("INSERT INTO aidemonitor(objectname,added,modified,removed,timestamp) VALUES (%s,%s,%s>
+sql = ("INSERT INTO aidemonitor(objectname,added,modified,removed,timestamp) VALUES (%s,%s,%s,%s,%s)")
 
 for i in range(1, len(temp_name)):
     values = ('{}'.format(temp_name[i]), '{}'.format(temp_value1[i]),
-              '{}'.format(temp_value3[i]), '{}'.format(temp_value2[i]), '{}'.format(timestamp>
+              '{}'.format(temp_value3[i]), '{}'.format(temp_value2[i]), '{}'.format(timestamp))
     mycursor.execute(sql, values)
 mycursor.close()
 mydb.commit()
