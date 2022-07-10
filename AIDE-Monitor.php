@@ -207,6 +207,7 @@
                                 'added' => $searchKeyword,
                                 'modified' => $searchKeyword,
                                 'removed' => $searchKeyword,
+                                'files' => $searchKeyword,
                                 'timestamp' => $searchKeyword
                             );
                         }
@@ -270,6 +271,7 @@
                                         <th>Added</th>
                                         <th>Modified</th>
                                         <th>Removed</th>
+                                        <th>Detail</th>
                                         <th>Timestamp</th>
                                     </tr>
                                 </thead>
@@ -284,6 +286,7 @@
                                         <td><?php echo $rule['added']; ?></td>
                                         <td><?php echo $rule['modified']; ?></td>
                                         <td><?php echo $rule['removed']; ?></td>
+                                        <td><?php echo $rule['files']; ?></td>
                                         <td><?php echo $rule['timestamp']; ?></td>
                                     </tr>
                                     <?php } }else{ ?>
