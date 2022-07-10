@@ -1,19 +1,82 @@
+from socket import NI_MAXHOST
 import mysql.connector
 import os
 from time import sleep
 import sys
 
-#os.system("sudo aide -c /etc/aide/aide.conf -C")
+# os.system("sudo aide -c /etc/aide/aide.conf -C")
 # Database connection
 mydb = mysql.connector.connect(
     host="localhost",
-    user="ta04",
-    password="root",
+    user="root",
+    password="",
     database="ta"
 )
 
 
-def string_join(list_string):
+class struct:
+    def __init__(self, name, namemin, addentries, removedentries, changeentries):
+        self.name = name
+        self.namemin = namemin
+        self.addentries = addentries
+        self.removedentries = removedentries
+        self.changeentries = changeentries
+
+
+Toples = []
+
+
+def top_insert(string, stringmin, operator):
+    if(operator == "[+]"):
+        Toples.append(struct(string, stringmin.replace('\n', ''), 1, 0, 0))
+    elif(operator == "[x]"):
+        Toples.append(struct(string, stringmin.replace('\n', ''), 0, 1, 0))
+    elif(operator == "[-]"):
+        Toples.append(struct(string, stringmin.replace('\n', ''), 0, 0, 1))
+
+
+def mid_insert(string, stringmin, operator):
+    arr = len(Toples)
+    j = 0
+    for i in range(0, arr):
+        if(Toples[i].name == string):
+            temp1 = Toples[i].namemin
+            temp2 = temp1 + ","+stringmin.replace('\n', '')
+            if(operator == "[+]"):
+                Toples[i].addentries += 1
+            elif(operator == "[x]"):
+                Toples[i].removedentries += 1
+            elif(operator == "[-]"):
+                Toples[i].changeentries += 1
+            Toples[i].namemin = temp2
+        else:
+            j += 1
+    if(j == arr):
+        if(operator == "[+]"):
+            Toples.append(struct(string, stringmin.replace('\n', ''), 1, 0, 0))
+        elif(operator == "[x]"):
+            Toples.append(struct(string, stringmin.replace('\n', ''), 0, 1, 0))
+        elif(operator == "[-]"):
+            Toples.append(struct(string, stringmin.replace('\n', ''), 0, 0, 1))
+
+
+def string_join(list_string, operator):
+    size = len(list_string)
+    temp = []
+    for i in range(size):
+        if(i > 0):
+            if(i != size-1):
+                temp.append(list_string[i])
+    string = '/'.join(temp)
+    last_string = operator+list_string[size-1]
+    if(len(Toples) == 0):
+        top_insert(string, last_string, operator)
+    else:
+        mid_insert(string, last_string, operator)
+    return string
+
+
+def string_join2(list_string):
     size = len(list_string)
     temp = []
     for i in range(size):
@@ -25,13 +88,10 @@ def string_join(list_string):
 
 
 with open("aide_check.txt", 'r') as f:
-    stamp = f.readlines()
-    for line in stamp:
-        stemp = line.split(':')
-        if(len(stemp) == 4):
-            if(stemp[0] == "Start timestamp"):
-                strtemp = stemp[3].split(' ')
-                timestamp = stemp[1]+":"+stemp[2]+":"+strtemp[0]
+    stamp = f.readlines()[0].split(':')
+    strtemp = stamp[3].split(' ')
+    timestamp = stamp[1]+":"+stamp[2]+":"+strtemp[0]
+
 
 with open("aide_check.txt", 'r') as f:
     f.readline()
@@ -79,83 +139,58 @@ foldername_changed = []
 
 for i in addentries:
     stringsplit1 = i.split('/')
-    tempname = string_join(stringsplit1)
+    tempname = string_join(stringsplit1, "[+]")
     tempcount = 1
-    print("Check Folder Names")
     # Check If Folder Has Already Mentioned
     if(tempname not in foldername_added):
         foldername_added.append(tempname)
         for j in addentries:
             stringsplit2 = j.split('/')
-            tempname2 = string_join(stringsplit2)
+            tempname2 = string_join2(stringsplit2)
             if(tempname == tempname2):
                 tempcount += 1
         arrtemp_added.append(tempcount)
 
 for i in removedentries:
     stringsplit1 = i.split('/')
-    tempname = string_join(stringsplit1)
+    tempname = string_join(stringsplit1, "[x]")
     tempcount = 1
     # Check If Folder Has Already Mentioned
     if(tempname not in foldername_removed):
         foldername_removed.append(tempname)
         for j in addentries:
             stringsplit2 = j.split('/')
-            tempname2 = string_join(stringsplit2)
+            tempname2 = string_join2(stringsplit2)
             if(tempname == tempname2):
                 tempcount += 1
         arrtemp_removed.append(tempcount)
 
 for i in changeentries:
     stringsplit1 = i.split('/')
-    tempname = string_join(stringsplit1)
+    tempname = string_join(stringsplit1, "[-]")
     tempcount = 1
     # Check If Folder Has Already Mentioned
     if(tempname not in foldername_changed):
         foldername_changed.append(tempname)
         for j in addentries:
             stringsplit2 = j.split('/')
-            tempname2 = string_join(stringsplit2)
+            tempname2 = string_join2(stringsplit2)
             if(tempname == tempname2):
                 tempcount += 1
         arrtemp_changed.append(tempcount)
 
 temp_name = []  # Object
-temp_value1 = []  # Added
-temp_value2 = []  # Removed
-temp_value3 = []  # Modified / Changed
 
 
 for i in range(len(foldername_added)):
     strname = foldername_added[i]
     temp_name.append(strname)
-    temp_value1.append(arrtemp_added[i])
-    if((strname in foldername_removed) == True):
-        for j in range(len(foldername_removed)):
-            if(strname == foldername_removed[j]):
-                temp_value2.append(arrtemp_removed[j])
-                break
-    else:
-        temp_value2.append(0)
 
-    if((strname in foldername_changed) == True):
-        for j in range(len(foldername_changed)):
-            if(strname == foldername_changed[j]):
-                temp_value3.append(arrtemp_changed[j])
-                break
-    else:
-        temp_value3.append(0)
 
 for i in range(len(foldername_removed)):
     strname = foldername_removed[i]
     if((strname in foldername_added) == False):
         temp_name.append(strname)
-        temp_value1.append(0)
-        temp_value2.append(arrtemp_removed[i])
-        if((strname in arrtemp_changed) == True):
-            temp_value3.append(arrtemp_changed[i])
-        else:
-            temp_value3.append(0)
     else:
         continue
 
@@ -164,15 +199,12 @@ for i in range(len(arrtemp_changed)):
     if((strname in foldername_added) == False):
         if((strname in foldername_removed) == False):
             temp_name.append(strname)
-            temp_value1.append(0)
-            temp_value2.append(0)
-            temp_value3.append(arrtemp_changed[i])
         else:
             continue
     else:
         continue
 
-mycursor = mydb.cursor(buffered=True)
+mycursor = mydb.cursor()
 
 mycursor.execute("SHOW TABLES")
 table_show = []
@@ -186,24 +218,38 @@ if("aidemonitor" in table_show):
 
 if (indicator == 0):
     mycursor.execute(
-        "CREATE TABLE aidemonitor (id INT AUTO_INCREMENT PRIMARY KEY, objectname varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `added` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `modified` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `removed` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,`timestamp` datetime NOT NULL)")
+        "CREATE TABLE aidemonitor (id INT AUTO_INCREMENT PRIMARY KEY, objectname varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `added` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `modified` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `removed` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,`timestamp` datetime NOT NULL,`files` LONGTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL)")
 else:
     mycursor.execute("DROP TABLE aidemonitor")
     mycursor.execute(
-        "CREATE TABLE aidemonitor (id INT AUTO_INCREMENT PRIMARY KEY, objectname varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `added` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `modified` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `removed` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,`timestamp` datetime NOT NULL)")
+        "CREATE TABLE aidemonitor (id INT AUTO_INCREMENT PRIMARY KEY, objectname varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `added` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `modified` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL, `removed` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,`timestamp` datetime NOT NULL,`files` LONGTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL)")
 
 table_show.clear()
 
-sql = ("INSERT INTO aidemonitor(objectname,added,modified,removed,timestamp) VALUES (%s,%s,%s,%s,%s)")
+sql = ("INSERT INTO aidemonitor(objectname,added,modified,removed,timestamp,files) VALUES (%s,%s,%s,%s,%s,%s)")
+
+
+def finder(t_name):
+    counter = 0
+    for i in range(len(Toples)):
+        if(t_name == Toples[i].name):
+            return i
+        else:
+            counter += 1
+    if(counter == len(Toples)):
+        print("Not Found")
+
 
 for i in range(1, len(temp_name)):
-    values = ('{}'.format(temp_name[i]), '{}'.format(temp_value1[i]),
-              '{}'.format(temp_value3[i]), '{}'.format(temp_value2[i]), '{}'.format(timestamp))
+    files = finder(temp_name[i])
+    values = ('{}'.format(temp_name[i]), '{}'.format(Toples[files].addentries),
+              '{}'.format(Toples[files].changeentries), '{}'.format(
+                  Toples[files].removedentries), '{}'.format(timestamp), '{}'.format(Toples[files].namemin))
     mycursor.execute(sql, values)
 mycursor.close()
 mydb.commit()
 # exec(open("loop.py").read())
 mydb.close()
 sleep(2)
-os.system(r"python3 loop.py")
+os.system(r"python loop.py")
 sys.exit(0)
