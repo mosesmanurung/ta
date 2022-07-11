@@ -4,12 +4,12 @@ import os
 from time import sleep
 import sys
 
-# os.system("sudo aide -c /etc/aide/aide.conf -C")
+# os.system("sudo aide -c /etc/aide/aide.conf --limit /var/www/html/ta/ --check")
 # Database connection
 mydb = mysql.connector.connect(
     host="localhost",
-    user="root",
-    password="",
+    user="ta04",
+    password="root",
     database="ta"
 )
 
@@ -88,9 +88,12 @@ def string_join2(list_string):
 
 
 with open("aide_check.txt", 'r') as f:
-    stamp = f.readlines()[0].split(':')
-    strtemp = stamp[3].split(' ')
-    timestamp = stamp[1]+":"+stamp[2]+":"+strtemp[0]
+    t_stamp = f.readlines()
+    for i in range (0,len(t_stamp)):
+        stamp = t_stamp[i].split(':')
+        if("Start timestamp" in stamp):
+            strtemp = stamp[3].split(' ')
+            timestamp = stamp[1]+":"+stamp[2]+":"+strtemp[0]
 
 
 with open("aide_check.txt", 'r') as f:
@@ -132,6 +135,7 @@ with open("aide_check.txt", 'r') as f:
 arrtemp_added = []
 arrtemp_removed = []
 arrtemp_changed = []
+
 
 foldername_added = []
 foldername_removed = []
@@ -251,5 +255,5 @@ mydb.commit()
 # exec(open("loop.py").read())
 mydb.close()
 sleep(2)
-os.system(r"python loop.py")
+os.system(r"python3 loop.py")
 sys.exit(0)
