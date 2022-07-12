@@ -127,7 +127,7 @@ sql = "INSERT INTO snortmonitor (classification, signature, ips, ports,direct, i
 #print(len(Signature_temp))
 #print(len(Timestamp_temp))
 #print(Signature_temp[len(Signature_temp)])
-for i in range(len(Timestamp_temp)):
+for i in range(len(Signature_temp)):
         if(Timestamp_temp[i] not in table_temp):
                 #print(Timestamp_temp[i]+" -> ",i)
                 values = ('{}'.format(Classification_temp[i]), '{}'.format(Signature_temp[i]),
